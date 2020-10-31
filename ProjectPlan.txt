@@ -18,4 +18,4 @@ UpdateDate -> table updating date
 boolean wished/greeted -> false by default
 
 
-default message => List of msg based on event type.
+default message => List of msg based on event type. ==>make this as  const file
