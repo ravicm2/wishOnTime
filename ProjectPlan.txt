@@ -1,0 +1,21 @@
+Spring batch(Scheduler) -> read , process, write
+ read -> fetch results of users who has next day as target.
+ process -> mail body, update user
+ write -> set true and save again.
+
+User:
+
+fromAddress
+toAddress
+FromName
+ToName
+eventType => Enum[birthday,anniversary,festivals,etc] => Set
+eventDate
+boolean reminder
+personal message
+creationDate -> saving date
+UpdateDate -> table updating date
+boolean wished/greeted -> false by default
+
+
+default message => List of msg based on event type.
