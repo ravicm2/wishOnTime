@@ -4,18 +4,31 @@ Spring batch(Scheduler) -> read , process, write
  write -> set true and save again.
 
 User:
-
+id
 fromAddress
 toAddress
 FromName
 ToName
-eventType => Enum[birthday,anniversary,festivals,etc] => Set
+eventType => [birthday,anniversary,festivals,etc] => Set
 eventDate
 boolean reminder
-personal message
+personal message => List
 creationDate -> saving date
 UpdateDate -> table updating date
 boolean wished/greeted -> false by default
+
+Event type:
+id
+String eventType 
+CreationDate
+updateDate
+
+PersonalMessage:
+id
+eventId
+message
+creationdate
+updateDate
 
 
 default message => List of msg based on event type. ==>make this as  const file
