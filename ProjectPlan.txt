@@ -11,23 +11,24 @@ fromAddress
 toAddress
 FromName
 ToName
+@ManyToOne(reference="id",nullable=false)
 eventType => [birthday,anniversary,festivals,etc] => Set
 eventDate
 boolean reminder
-personal message => List
 creationDate -> saving date
 UpdateDate -> table updating date
 boolean wished/greeted -> false by default
 
 Event type:
 id
+@OneToOne(reference="ïd",nullable=true)
+PersonalMessage message;
 String eventType 
 CreationDate
 updateDate
 
 PersonalMessage:
 id
-eventId
 message
 creationdate
 updateDate
