@@ -27,7 +27,8 @@ updateDate
 
 PersonalMessage:
 id
-eventId
+@OneToOne
+EventType eventtype;
 message
 creationdate
 updateDate
