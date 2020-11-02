@@ -18,12 +18,13 @@ public class EventTypeEntity {
 
     @Id
     private Long id;
+    @Column(nullable = false)
     private String eventType;
     private Date createdDate;
     private Date updatedDate;
 
     @OneToOne
     @JoinColumn(referencedColumnName = "id",nullable = true)
-    List<PersonalMessageEntity> personalMessage;
+    List<PersonalMessageEntity> personalMessageList;
 
 }

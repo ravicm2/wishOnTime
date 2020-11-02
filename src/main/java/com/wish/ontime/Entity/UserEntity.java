@@ -1,8 +1,10 @@
 package com.wish.ontime.Entity;
 
 import lombok.*;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.*;
 
 
@@ -18,26 +20,35 @@ public class UserEntity {
     @Id
     private Long id;
 
+    @Column(nullable = false)
+    @Email
     private String fromAddress;
 
+    @Column(nullable = false)
+    @Email
     private String toAddress;
 
-    private String fromName;
+    @Column(nullable = false)
+    private String userName;
 
-    private String toName;
+    @Column(nullable = false)
+    private String senderName;
 
-    private Boolean remainder;
+    @Column(nullable = false)
+    private boolean remainder;
 
-    private Boolean wished = false;
+    @Column(nullable = false)
+    private boolean wished = false;
 
-    private Date createDate;
+    private Date createdDate;
 
-    private Date updateDate;
+    private Date updatedDate;
 
+    @Column(nullable = false)
     private Date eventDate;
 
     @ManyToOne
     @JoinColumn(referencedColumnName = "id", nullable = false)
-    Set<EventTypeEntity> eventType;
+    Set<EventTypeEntity> eventTypes;
 
 }
