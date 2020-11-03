@@ -3,9 +3,11 @@ Spring batch(Scheduler) -> read , process, write
  process -> mail body, update user
  write -> set true and save again.
 
+---------------------------------------------------------------------------------------------------------------
 Tables/Entities:
 
 User:
+-----
 id
 fromAddress
 toAddress
@@ -20,6 +22,7 @@ UpdateDate -> table updating date
 boolean wished/greeted -> false by default
 
 Event type:
+-----------
 id
 @OneToOne(reference="ïd",nullable=true)
 PersonalMessage message;
@@ -28,10 +31,11 @@ CreationDate
 updateDate
 
 PersonalMessage:
+----------------
 id
 message
 creationdate
 updateDate
-
+-----------------------------------------------------------------------------------------------------------
 
 default message => List of msg based on event type. ==>make this as  const file
