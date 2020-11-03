@@ -24,7 +24,7 @@ public class EventTypeEntity {
     private Date updatedDate;
 
     @OneToOne
-    @JoinColumn(referencedColumnName = "id",nullable = true)
+    @JoinColumn(referencedColumnName = "id",nullable = true,name = "personal_message_id")
     List<PersonalMessageEntity> personalMessageList;
 
 }

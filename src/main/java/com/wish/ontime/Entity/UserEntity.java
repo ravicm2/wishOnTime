@@ -21,11 +21,11 @@ public class UserEntity {
     private Long id;
 
     @Column(nullable = false)
-    @Email
+    @Email(message = "invalid email")
     private String fromAddress;
 
     @Column(nullable = false)
-    @Email
+    @Email(message = "invalid email")
     private String toAddress;
 
     @Column(nullable = false)
@@ -38,7 +38,7 @@ public class UserEntity {
     private boolean remainder;
 
     @Column(nullable = false)
-    private boolean wished = false;
+    private boolean wished;
 
     private Date createdDate;
 
@@ -48,7 +48,7 @@ public class UserEntity {
     private Date eventDate;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "id", nullable = false)
+    @JoinColumn(referencedColumnName = "id", nullable = false,name = "event_id",unique = true)
     Set<EventTypeEntity> eventTypes;
 
 }
