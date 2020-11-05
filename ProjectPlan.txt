@@ -13,7 +13,7 @@ fromAddress
 toAddress
 FromName
 ToName
-@ManyToOne(reference="id",nullable=false)
+@OneToMany(reference="id",nullable=false)
 eventType => [birthday,anniversary,festivals,etc] => Set
 eventDate
 boolean reminder

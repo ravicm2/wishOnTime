@@ -47,7 +47,7 @@ public class UserEntity {
     @Column(nullable = false)
     private Date eventDate;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(referencedColumnName = "id", nullable = false,name = "event_id",unique = true)
     Set<EventTypeEntity> eventTypes;
 
