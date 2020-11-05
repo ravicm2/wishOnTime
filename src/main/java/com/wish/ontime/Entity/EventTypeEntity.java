@@ -25,6 +25,6 @@ public class EventTypeEntity {
 
     @OneToOne
     @JoinColumn(referencedColumnName = "id",nullable = true,name = "personal_message_id")
-    List<PersonalMessageEntity> personalMessageList;
+    PersonalMessageEntity personalMessageList;
 
 }
