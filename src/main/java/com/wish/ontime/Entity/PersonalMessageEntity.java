@@ -2,10 +2,7 @@ package com.wish.ontime.Entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -17,6 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class PersonalMessageEntity {
         @Id
+        @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "PERSONALMSG_SEQ")
         private Long id;
         private String message;
         private Date createdDate;

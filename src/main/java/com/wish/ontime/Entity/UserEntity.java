@@ -18,6 +18,7 @@ import java.util.*;
 public class UserEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "USER_SEQ")
     private Long id;
 
     @Column(nullable = false)
