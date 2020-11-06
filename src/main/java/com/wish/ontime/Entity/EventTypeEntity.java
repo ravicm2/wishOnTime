@@ -17,6 +17,8 @@ import java.util.List;
 public class EventTypeEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "EVENTTYPE_GENERATOR")
+    @SequenceGenerator(name = "EVENTTYPE_GENERATOR",sequenceName = "EVENTTYPE_SEQ",allocationSize = 1)
     private Long id;
     @Column(nullable = false)
     private String eventType;
@@ -25,6 +27,6 @@ public class EventTypeEntity {
 
     @OneToOne
     @JoinColumn(referencedColumnName = "id",nullable = true,name = "personal_message_id")
-    PersonalMessageEntity personalMessageList;
+    PersonalMessageEntity personalMessage;
 
 }

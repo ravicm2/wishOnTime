@@ -18,6 +18,8 @@ import java.util.*;
 public class UserEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "USERID_GENERATOR")
+    @SequenceGenerator(name = "USERID_GENERATOR",sequenceName = "USERID_SEQ",allocationSize = 1)
     private Long id;
 
     @Column(nullable = false)
