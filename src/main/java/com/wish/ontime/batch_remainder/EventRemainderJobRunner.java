@@ -12,14 +12,15 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
 @EnableScheduling
-public class EventJobRunner {
+public class EventRemainderJobRunner {
 
-    private static final Logger LOG = LoggerFactory.getLogger(EventJobRunner.class);
+    private static final Logger LOG = LoggerFactory.getLogger(EventRemainderJobRunner.class);
 
     @Autowired
     private JobLauncher launcher;
@@ -27,12 +28,14 @@ public class EventJobRunner {
     @Autowired
     private Job job;
 
-    @Scheduled(cron = "0 0 22 * * ?")
+    //    @Scheduled(cron = "0 0 22 * * ?")
+    @Scheduled(fixedRate = 999999999)
     public void runJob() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
-        LOG.info("Job Executing");
+        LOG.info("Remainder Job Executing");
         try {
             Map<String, JobParameter> maps = new HashMap<>();
             maps.put("time", new JobParameter(System.currentTimeMillis()));
+            maps.put("date", new JobParameter(LocalDate.now().toString()));
 
             JobParameters jobParameters = new JobParameters(maps);
             JobExecution execution = this.launcher.run(this.job, jobParameters);
