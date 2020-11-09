@@ -28,8 +28,7 @@ public class EventJobRunner {
     @Autowired
     private Job job;
 
-    //    @Scheduled(cron = "0 0 0 * * ?")
-    @Scheduled(fixedRate = 999999999)
+    @Scheduled(cron = "0 0 0 * * ?")
     public void runJob() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
         LOG.info("Job Executing");
         try {
