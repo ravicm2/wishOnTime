@@ -28,9 +28,10 @@ public class EventJobRunner {
     @Autowired
     private Job job;
 
-    @Scheduled(cron = "0 0 0 * * ?")
+    //    @Scheduled(cron = "0 0 0 * * ?")
+    @Scheduled(fixedRate = 999999999)
     public void runJob() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
-        LOG.info("Remainder Job Executing");
+        LOG.info("Job Executing");
         try {
             Map<String, JobParameter> maps = new HashMap<>();
             maps.put("time", new JobParameter(System.currentTimeMillis()));
