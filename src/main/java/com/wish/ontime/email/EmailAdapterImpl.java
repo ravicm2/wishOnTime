@@ -32,7 +32,7 @@ public class EmailAdapterImpl implements EmailAdapter {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setTo(user.getToAddress());
         simpleMailMessage.setSentDate(new Date());
-        simpleMailMessage.setText("Hi "+user.getReceiverName()+"/n"+user.getPersonalMessage()+"/n"+"Regards,"+"/n"+user.getSenderName());
+        simpleMailMessage.setText("Hi "+user.getReceiverName()+"\n"+user.getPersonalMessage()+"\n"+"Regards,"+"\n"+user.getSenderName());
         simpleMailMessage.setSubject("WISH YOU HAPPY " + user.getEventType());
         simpleMailMessage.setReplyTo(user.getFromAddress());
 
