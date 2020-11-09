@@ -1,4 +1,4 @@
-package com.wish.ontime.batch_remainder;
+package com.wish.ontime.batch;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,9 +18,9 @@ import java.util.Map;
 
 @Component
 @EnableScheduling
-public class EventRemainderJobRunner {
+public class EventJobRunner {
 
-    private static final Logger LOG = LoggerFactory.getLogger(EventRemainderJobRunner.class);
+    private static final Logger LOG = LoggerFactory.getLogger(EventJobRunner.class);
 
     @Autowired
     private JobLauncher launcher;
@@ -28,7 +28,7 @@ public class EventRemainderJobRunner {
     @Autowired
     private Job job;
 
-    //    @Scheduled(cron = "0 0 22 * * ?")
+    //    @Scheduled(cron = "0 0 0 * * ?")
     @Scheduled(fixedRate = 999999999)
     public void runJob() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
         LOG.info("Remainder Job Executing");

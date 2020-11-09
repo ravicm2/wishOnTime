@@ -1,5 +1,6 @@
 package com.wish.ontime.email;
 
+import com.wish.ontime.email.api.EmailAdapter;
 import com.wish.ontime.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-public class EmailAdapterImpl implements EmailAdapter{
+public class EmailAdapterImpl implements EmailAdapter {
 
     @Autowired
     private JavaMailSenderImpl javaMailSender;

@@ -1,6 +1,6 @@
-package com.wish.ontime.batch_wishPeople.chunk;
+package com.wish.ontime.batch.chunk;
 
-import com.wish.ontime.email.EmailAdapter;
+import com.wish.ontime.email.api.EmailAdapter;
 import com.wish.ontime.model.User;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
