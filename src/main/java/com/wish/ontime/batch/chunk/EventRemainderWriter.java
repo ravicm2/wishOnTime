@@ -1,6 +1,6 @@
 package com.wish.ontime.batch.chunk;
 
-import com.wish.ontime.batch.utility.Util;
+import com.wish.ontime.batch.utility.EventUtility;
 import com.wish.ontime.email.api.EmailAdapter;
 import com.wish.ontime.model.User;
 import org.slf4j.Logger;
@@ -20,7 +20,7 @@ public class EventRemainderWriter implements ItemWriter<User> {
     private EmailAdapter emailAdapter;
 
     @Autowired
-    private Util util;
+    private EventUtility eventUtility;
 
     @Override
     public void write(List<? extends User> list) throws Exception {
@@ -31,9 +31,9 @@ public class EventRemainderWriter implements ItemWriter<User> {
 //      LocalDate tomorrow = LocalDate.now().plusDays(1);
 
         //as of now implementation to run at 12am.
-        LocalDate today = util.getDate();
+        LocalDate today = eventUtility.getDate();
 
-        util.filterUsers(today,list).filter(user -> Boolean.TRUE.toString().equals(user.getRemainder()))
+        list.stream().filter(user -> eventUtility.filterUsers(today,user) && Boolean.TRUE.toString().equals(user.getRemainder()))
                 .forEach(emailAdapter::sendRemainderEmail);
 
         //filtering users who opted for remainder and sending mail.

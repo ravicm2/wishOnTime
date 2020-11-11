@@ -1,6 +1,6 @@
 package com.wish.ontime.batch.chunk;
 
-import com.wish.ontime.batch.utility.Util;
+import com.wish.ontime.batch.utility.EventUtility;
 import com.wish.ontime.email.api.EmailAdapter;
 import com.wish.ontime.model.User;
 import org.slf4j.Logger;
@@ -21,7 +21,7 @@ public class EventWishWriter implements ItemWriter<User> {
     private EmailAdapter emailAdapter;
 
     @Autowired
-    private Util util;
+    private EventUtility util;
 
     @Override
     public void write(List<? extends User> list) throws Exception {
@@ -30,7 +30,7 @@ public class EventWishWriter implements ItemWriter<User> {
 
         LocalDate today = util.getDate();
 
-        util.filterUsers(today,list).forEach(emailAdapter::sendEmail);
+        list.stream().filter(user -> util.filterUsers(today,user)).forEach(emailAdapter::sendEmail);
 
         //filtering users who has event
 //        list.stream().filter(user ->
