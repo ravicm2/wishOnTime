@@ -28,13 +28,15 @@ public class EventJobRunner {
     @Autowired
     private Job job;
 
-    @Scheduled(cron = "0 0 0 * * ?")
-    public void runJob() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
+        @Scheduled(cron = "0 0 0 * * ?")
+        public void runJob() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
         LOG.info("Job Executing");
         try {
             Map<String, JobParameter> maps = new HashMap<>();
             maps.put("time", new JobParameter(System.currentTimeMillis()));
             maps.put("date", new JobParameter(LocalDate.now().toString()));
+            maps.put("jobName", new JobParameter(job.getName()));
+            maps.put("stepName", new JobParameter(String.valueOf(job.isRestartable())));
 
             JobParameters jobParameters = new JobParameters(maps);
             JobExecution execution = this.launcher.run(this.job, jobParameters);
