@@ -35,8 +35,8 @@ public class EventJobRunner {
             Map<String, JobParameter> maps = new HashMap<>();
             maps.put("time", new JobParameter(System.currentTimeMillis()));
             maps.put("date", new JobParameter(LocalDate.now().toString()));
-            maps.put("Job_Name", new JobParameter(job.getName()));
-            maps.put("Step_Name", new JobParameter(String.valueOf(job.isRestartable())));
+            maps.put("jobName", new JobParameter(job.getName()));
+            maps.put("stepName", new JobParameter(String.valueOf(job.isRestartable())));
 
             JobParameters jobParameters = new JobParameters(maps);
             JobExecution execution = this.launcher.run(this.job, jobParameters);
