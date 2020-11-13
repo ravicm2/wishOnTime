@@ -31,18 +31,11 @@ public class EventRemainderWriter implements ItemWriter<User> {
 //      LocalDate tomorrow = LocalDate.now().plusDays(1);
 
         //as of now implementation to run at 12am.
-        LocalDate today = eventUtility.getDate();
-
-        list.stream().filter(user -> eventUtility.filterUsers(today,user) && Boolean.TRUE.toString().equals(user.getRemainder()))
-                .forEach(emailAdapter::sendRemainderEmail);
+        LocalDate today = eventUtility.getCurrentDate();
 
         //filtering users who opted for remainder and sending mail.
-
-//         list.stream().filter(user ->
-//                Integer.parseInt(user.getEventDate().split("/")[0]) == today.getDayOfMonth() &&
-//                        Integer.parseInt(user.getEventDate().split("/")[1]) == today.getMonthValue() &&
-//                        Boolean.TRUE.toString().equals(user.getRemainder())
-//        ).forEach(emailAdapter::sendRemainderEmail);
+        list.stream().filter(user -> eventUtility.isUserHasEvent(today,user) && Boolean.TRUE.toString().equals(user.getRemainder()))
+                .forEach(emailAdapter::sendRemainderEmail);
 
     }
 }
