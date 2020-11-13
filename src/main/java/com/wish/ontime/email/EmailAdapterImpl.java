@@ -9,6 +9,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Component
@@ -27,14 +28,27 @@ public class EmailAdapterImpl implements EmailAdapter {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setTo(user.getFromAddress());
         simpleMailMessage.setSentDate(new Date());
-        simpleMailMessage.setText("Hi "+user.getSenderName() +",\n \n"+"don't forget to wish " + user.getReceiverName() + " regarding " + user.getEventType() + " on " + user.getEventDate()
-        +"\n"+"\n"+"Regards,"+"\n"+"REMAINDER SERVICES.")
+        simpleMailMessage.setText("Hi " + user.getSenderName() + ",\n \n" + "don't forget to wish " + user.getReceiverName() + " regarding " + user.getEventType() + " on " + user.getEventDate()
+                + "\n" + "\n" + "Regards," + "\n" + "REMAINDER SERVICES.")
         ;
         simpleMailMessage.setSubject("REMAINDER REGARDING EVENT " + user.getEventType());
 
+        updateUserNameAndPassword(user);
+
         javaMailSender.send(simpleMailMessage);
 
-        LOG.info("sent remainder mail");
+        LOG.info("sent remainder mail at " + LocalDate.now().toString());
+    }
+
+    private void updateUserNameAndPassword(User user) {
+
+        if (user.getFromAddress().equals("abinayas98@gmail.com")) {
+            javaMailSender.setUsername(user.getFromAddress());
+            javaMailSender.setPassword("xnyaxbetaskcydkb");
+        } else {
+            javaMailSender.setUsername(user.getFromAddress());
+            javaMailSender.setPassword("upzrbguxeslkjljn");
+        }
     }
 
     @Override
@@ -49,8 +63,11 @@ public class EmailAdapterImpl implements EmailAdapter {
         simpleMailMessage.setSubject("WISH YOU HAPPY " + user.getEventType());
         simpleMailMessage.setReplyTo(user.getFromAddress());
 
+        updateUserNameAndPassword(user);
+
         javaMailSender.send(simpleMailMessage);
 
-        LOG.info("sent wish mail");
+        LOG.info("sent wish mail at " + LocalDate.now().toString());
     }
+
 }
