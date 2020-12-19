@@ -44,10 +44,10 @@ public class EmailAdapterImpl implements EmailAdapter {
 
         if (user.getFromAddress().equals("abinayas98@gmail.com")) {
             javaMailSender.setUsername(user.getFromAddress());
-            javaMailSender.setPassword("xnyaxbetaskcydkb");
+            javaMailSender.setPassword("");
         } else {
             javaMailSender.setUsername(user.getFromAddress());
-            javaMailSender.setPassword("upzrbguxeslkjljn");
+            javaMailSender.setPassword("");
         }
     }
 
